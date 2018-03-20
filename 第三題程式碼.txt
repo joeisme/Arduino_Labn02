@@ -1,0 +1,73 @@
+// Lab02_3
+// 使用for迴圈的跑馬燈程式
+//開關 OFF -> LED 向左及向右執行花色展示
+ // 開關 ON -> 執行自定花色展示
+// 每個 LED 正極接到 Pin 10 - 7, 負極接地
+const byte startPin = 10;
+
+const byte endPin = 17;
+byte i;
+byte n;
+void setup() 
+{
+// 將每個 Pin 設定成輸出
+for (byte i = startPin; i<= endPin; i++) 
+{
+pinMode(i, OUTPUT);
+}
+pinMode(8, INPUT);
+}
+
+void loop()
+{
+  if(digitalRead(8))
+  {
+for (i=startPin;i<=endPin;i++)
+  digitalWrite(i, LOW);
+  
+  for (i=startPin;i<=endPin;i++)
+  digitalWrite(i, LOW);
+    for (i=endPin;i>=startPin;i--)
+{
+
+digitalWrite(i, HIGH);
+  delay(100);
+
+digitalWrite(i,   LOW );
+  delay(100);  
+  }
+  
+  for (i=startPin;i<=endPin;i++)
+{
+
+digitalWrite(i, HIGH);
+  delay(100);
+
+digitalWrite(i,   LOW );
+  delay(100);  
+} 
+}
+ else 
+{
+    //輛滅
+  digitalWrite(10, HIGH);
+  digitalWrite(11, HIGH);
+  digitalWrite(12, HIGH);
+  digitalWrite(13, HIGH);
+  digitalWrite(14, HIGH);
+  digitalWrite(15, HIGH);
+  digitalWrite(16, HIGH);
+  digitalWrite(17, HIGH);
+  delay(100);  
+   digitalWrite(17, LOW);
+  digitalWrite(16, LOW);
+  digitalWrite(15, LOW);
+  digitalWrite(14, LOW);
+  digitalWrite(13, LOW);
+  digitalWrite(12, LOW);
+  digitalWrite(11, LOW);
+  digitalWrite(10, LOW);
+  delay(100);  }
+  //輛滅結束
+
+}
